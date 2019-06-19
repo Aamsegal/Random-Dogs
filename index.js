@@ -11,7 +11,7 @@ function getDogImage() {
 function displayResults(responseJson) {
   console.log(responseJson);
   //replace the existing image with the new one
-    $('.dog-Image-Container').html(
+    $('.dog-Image-Container').append(
         `<img src="${responseJson.message}" class="dog-Image" alt="Pupper Image">`
     )
   /*display the results section
@@ -20,8 +20,10 @@ function displayResults(responseJson) {
 
 function watchForm() {
   $('form').submit(event => {
+    $("#dog-Image-Container").html("");
     event.preventDefault();
-    for (let i = 0; i < 6; i++) {
+    let dogNumber = $('#dog-Number').val();
+    for (let i = 0; i < dogNumber; i++) {
         getDogImage();
     }
   });
